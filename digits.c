@@ -1,3 +1,5 @@
+#include<stdlib.h>
+
 int d1 = 9;
 int d2 = 10;
 int d3 = 11;
@@ -42,7 +44,11 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(2);
+  Serial.println();
+  Serial.println(123);
+  Serial.println("asdf");
+
+  exit(1);
 
   
 }
