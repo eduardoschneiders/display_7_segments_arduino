@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <unistd.h>
 
 const int OUTPUT = 0;
 const int INPUT = 1;
@@ -20,6 +20,10 @@ void digitalWrite(int pin, int mode){
   printf("digitalWrite ");
   printf("pin: %d ", pin);
   printf("mode: %d\n", mode);
+}
+
+void delay(int time){
+  usleep(time * 1000);
 }
 
 #include "digits.c"

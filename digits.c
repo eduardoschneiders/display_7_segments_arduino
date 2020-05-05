@@ -43,12 +43,16 @@ void setup() {
   Serial.begin(9600);
 }
 
+
 void loop() {
   Serial.println();
   Serial.println(123);
   Serial.println("asdf");
+  Serial.println("===================");
 
-  exit(1);
+  delay(1000);
+
+  // exit(1);
 
   
 }
