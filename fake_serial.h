@@ -11,8 +11,12 @@ class FakeSerial {
   public:
     void begin(unsigned long baud);
     void println();
-    void println(int a);
+    void println(int input);
     void println(string input);
+
+    void print();
+    void print(int input);
+    void print(string input);
     void end();
 };
 

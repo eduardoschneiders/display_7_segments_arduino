@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "fake_serial.h"
+
 const int OUTPUT = 0;
 const int INPUT = 1;
 const int LOW = 0;

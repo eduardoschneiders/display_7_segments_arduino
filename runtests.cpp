@@ -1,13 +1,10 @@
 #include <stdio.h>
 
-#include "fake_serial.h"
+#include "mock_arduino.h"
 
 FakeSerial Serial;
 
-#include "mock_arduino.h"
-
 #include "digits.c"
-
 
 int main(){
   printf("===Starting code====\n");
