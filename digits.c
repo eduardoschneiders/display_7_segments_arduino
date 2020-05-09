@@ -43,48 +43,45 @@ void setup() {
   Serial.begin(9600);
 }
 
-void writeDigit(int number);
+void writeDigit(int number, int pins[]);
 
 void loop() {
-  Serial.println();
-  Serial.println(123);
-  Serial.println("asdf");
-  writeDigit(0);
-  writeDigit(1);
-  writeDigit(2);
-  writeDigit(3);
-  writeDigit(4);
-  writeDigit(5);
-  writeDigit(6);
-  writeDigit(7);
-  writeDigit(8);
-  writeDigit(9);
+  int pins[] = {a,b,c,d,e,f,g};
+
+  for (int i = 0; i < 10; ++i){
+    writeDigit(i, pins);
+  }
 
   Serial.println("===================");
 
-  delay(1000);
-  // exit(1);
+  // delay(1000 * 10);
+  exit(1);
 }
 
-void writeDigit(int number){
+void writeDigit(int number, int pins[]){
   int digits[10][7] = {
-    {0,0,0,0,0,0,0},
-    {0,0,0,0,0,0,1},
-    {0,0,0,0,0,1,0},
-    {0,0,0,0,0,1,1},
-    {0,0,0,0,1,0,0},
-    {0,0,0,0,1,0,1},
-    {0,0,0,0,1,1,0},
-    {0,0,0,0,1,1,1},
-    {0,0,0,1,0,0,0},
-    {0,0,0,1,0,0,1},
+    {1,1,1,1,1,0,0}, // 0
+    {0,1,1,0,0,0,0}, // 1
+    {1,1,0,1,1,0,1}, // 2
+    {1,1,1,1,0,0,1}, // 3
+    {0,1,1,0,0,1,1}, // 4
+    {1,0,1,1,0,1,1}, // 5
+    {1,0,1,1,1,1,1}, // 6
+    {1,1,1,0,0,0,0}, // 7
+    {1,1,1,1,1,1,1}, // 8
+    {1,1,1,1,0,1,1}, // 9
   };
 
+  Serial.println("number: ");
+  Serial.println(number);
+
   for (int i = 0; i < 7; i++) {
-    Serial.print(digits[number][i]);
+    int signal = digits[number][i];
+    digitalWrite(pins[i], signal);
   }
 
   Serial.println();
 }
+
 
 
