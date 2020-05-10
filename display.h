@@ -5,12 +5,14 @@
 
 	class DISPLAY {
 		public:
-			DISPLAY(int pins[]);
+			DISPLAY(int pins[], int anode_mode, int d1, int d2=0, int d3=0, int d4=0);
 			void setup();
-			void showDigit(int a);
+			void showDigit(int digit);
 		
 		private:
 			int _pins[7];
+			int _anode_mode;
+			int _d1;
 			int _digits[10][7] = {
 		    {1,1,1,1,1,1,0}, // 0
 		    {0,1,1,0,0,0,0}, // 1
@@ -23,6 +25,7 @@
 		    {1,1,1,1,1,1,1}, // 8
 		    {1,1,1,1,0,1,1}, // 9
 		  };
+		  int convert_signal(int value);
 	};
 
 #endif

@@ -15,81 +15,21 @@ int f = 7;
 int g = 8;
 
 int pins[] = {a,b,c,d,e,f,g};
-DISPLAY display(pins);
+int anode_mode = 1;
+
+DISPLAY display(pins, anode_mode, d1);
 void setup() {
   display.setup();
+  Serial.begin(9600);
+}
+
+void loop() {
+
   for (int i = 0; i < 10; i++){
     Serial.println(i);
     display.showDigit(i);
   }
-  
-  exit(0);
-  pinMode(d1, OUTPUT);
-  pinMode(d2, OUTPUT);
-  pinMode(d3, OUTPUT);
-  pinMode(d4, OUTPUT);
-
-  pinMode(a, OUTPUT);
-  pinMode(b, OUTPUT);
-  pinMode(c, OUTPUT);
-  pinMode(d, OUTPUT);
-  pinMode(e, OUTPUT);
-  pinMode(f, OUTPUT);
-  pinMode(g, OUTPUT);
-
-  digitalWrite(d1, HIGH);
-  digitalWrite(d2, HIGH);
-  digitalWrite(d3, HIGH);
-  digitalWrite(d4, HIGH);
-
-  digitalWrite(a, HIGH);
-  digitalWrite(b, HIGH);
-  digitalWrite(c, HIGH);
-  digitalWrite(d, HIGH);
-  digitalWrite(e, HIGH);
-  digitalWrite(f, HIGH);
-  digitalWrite(g, HIGH);
-
-  Serial.begin(9600);
-}
-
-void writeDigit(int number, int pins[]);
-
-void loop() {
-  for (int i = 0; i < 10; ++i){
-    writeDigit(i, pins);
-  }
-
-  Serial.println("===================");
 
   // delay(1000 * 10);
-  exit(1);
+  exit(0);
 }
-
-void writeDigit(int number, int pins[]){
-  int digits[10][7] = {
-    {1,1,1,1,1,0,0}, // 0
-    {0,1,1,0,0,0,0}, // 1
-    {1,1,0,1,1,0,1}, // 2
-    {1,1,1,1,0,0,1}, // 3
-    {0,1,1,0,0,1,1}, // 4
-    {1,0,1,1,0,1,1}, // 5
-    {1,0,1,1,1,1,1}, // 6
-    {1,1,1,0,0,0,0}, // 7
-    {1,1,1,1,1,1,1}, // 8
-    {1,1,1,1,0,1,1}, // 9
-  };
-
-  Serial.println("number: ");
-  Serial.println(number);
-
-  for (int i = 0; i < 7; i++) {
-    int signal = digits[number][i];
-    digitalWrite(pins[i], signal);
-  }
-
-  Serial.println();
-}
-
-
-
