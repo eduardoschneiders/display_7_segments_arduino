@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "display.h"
 
 int d1 = 9;
 int d2 = 10;
@@ -13,7 +14,16 @@ int e = 6;
 int f = 7;
 int g = 8;
 
+int pins[] = {a,b,c,d,e,f,g};
+DISPLAY display(pins);
 void setup() {
+  display.setup();
+  for (int i = 0; i < 10; i++){
+    Serial.println(i);
+    display.showDigit(i);
+  }
+  
+  exit(0);
   pinMode(d1, OUTPUT);
   pinMode(d2, OUTPUT);
   pinMode(d3, OUTPUT);
@@ -46,8 +56,6 @@ void setup() {
 void writeDigit(int number, int pins[]);
 
 void loop() {
-  int pins[] = {a,b,c,d,e,f,g};
-
   for (int i = 0; i < 10; ++i){
     writeDigit(i, pins);
   }

@@ -1,8 +1,8 @@
 CC := g++
-FILES := fake_serial.cpp mock_arduino.cpp runtests.cpp
+FILES := display.cpp fake_serial.cpp mock_arduino.cpp runtests.cpp
 
 build: $(FILES)
-	$(CC) $(FILES) -o result.o 
+	$(CC) -std=c++11 $(FILES) -o result.o 
 
 test: build
 	./result.o
