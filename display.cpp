@@ -25,7 +25,7 @@ void DISPLAY::setup(){
 void DISPLAY::showDigit(int digit){
 	digitalWrite(_d1, convert_signal(HIGH));
 
-  for (int i = 0; i < 7; ++i){
+  for (int i = 0; i <= 6; ++i){
   	int signal = convert_signal(_digits[digit][i]);
     digitalWrite(_pins[i], signal);
   }

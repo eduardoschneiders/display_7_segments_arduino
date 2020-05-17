@@ -7,6 +7,7 @@ void pinMode(int pin, int mode){
 }
 
 void digitalWrite(int pin, int mode){
+  _arduino_pins[pin] = mode;
   printf("digitalWrite ");
   printf("pin: %d ", pin);
   printf("mode: %d\n", mode);

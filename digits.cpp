@@ -18,18 +18,22 @@ int pins[] = {a,b,c,d,e,f,g};
 int anode_mode = 1;
 
 DISPLAY display(pins, anode_mode, d1);
+
+int current_number = 0;
+
 void setup() {
   display.setup();
   Serial.begin(9600);
 }
 
 void loop() {
+  delay(1000 * 1);
 
-  for (int i = 0; i < 10; i++){
-    Serial.println(i);
-    display.showDigit(i);
-  }
+  if (current_number > 9)
+    current_number = 0;
 
-  // delay(1000 * 10);
-  exit(0);
+  Serial.println(current_number);
+  display.showDigit(current_number++);
+ 
+  // exit(0);
 }
