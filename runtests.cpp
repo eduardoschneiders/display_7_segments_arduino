@@ -15,7 +15,7 @@ int main(){
   printf("===Starting code====\n");
   setup();
 
-  while(1){
+  while(1) {
     loop();
     debug_number();
   }
@@ -25,37 +25,37 @@ int main(){
 
 void debug_number(){
   if (convert_signal(_arduino_pins[0 + offset]))
-    printf("  _ "); // A
+    printf(" _ "); // A
 
   printf("\n");
 
-  if (convert_signal(_arduino_pins[5 + offset]))
-    printf("|");  // F
-
-  printf("   ");
+  printf(convert_signal(_arduino_pins[5 + offset]) ? "|" : " ");  // F
+  
+  printf(" ");
 
   if (convert_signal(_arduino_pins[1 + offset]))
     printf("|");  // B
-
+  
   printf("\n");
 
   if (convert_signal(_arduino_pins[6 + offset]))
-    printf("  - "); // G
+    printf(" - "); // G
 
   printf("\n");
 
-  if (convert_signal(_arduino_pins[4 + offset]))
-    printf("|");  // E
+  
+  printf(convert_signal(_arduino_pins[4 + offset]) ? "|" : " ");  // E
 
-  printf("   ");
+  printf(" ");
 
   if (convert_signal(_arduino_pins[2 + offset]))
     printf("|");  // C
+  
 
   printf("\n");
 
   if (convert_signal(_arduino_pins[3 + offset]))
-    printf("  - "); // D
+    printf(" - "); // D
 
   
 
