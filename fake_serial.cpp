@@ -1,7 +1,7 @@
 #include "fake_serial.h"
 
 void FakeSerial::begin(unsigned long baud){
-  printf("Begin serial\n");
+  // printf("Begin serial\n");
 };
 
 void FakeSerial::println(){

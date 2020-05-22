@@ -17,9 +17,9 @@ int g = 8;
 int pins[] = {a,b,c,d,e,f,g};
 int anode_mode = 1;
 
-DISPLAY display(pins, anode_mode, d1);
+DISPLAY display(pins, anode_mode, d1, d2, d3, d4);
 
-int current_number = 0;
+int current_number = 1234;
 
 void setup() {
   display.setup();
@@ -27,13 +27,16 @@ void setup() {
 }
 
 void loop() {
-  delay(1000 * 1);
+  
 
-  if (current_number > 9)
-    current_number = 0;
+  // if (current_number > 9)
+  //   current_number = 0;
 
+  Serial.print("main program(digits.cpp): ");
   Serial.println(current_number);
-  display.showDigit(current_number++);
+  // display.showDigit(current_number++);
+  display.handle(current_number);
  
   // exit(0);
+  delay(1000 * 1);
 }
