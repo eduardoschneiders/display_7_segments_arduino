@@ -28,6 +28,7 @@
         {1,1,1,1,0,1,1}, // 9
       };
       int convert_signal(int value);
+      int* splitDigits(int digit);
 	};
 
 #endif

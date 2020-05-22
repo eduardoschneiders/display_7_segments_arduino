@@ -12,15 +12,11 @@ struct Test {
 
 #include "digits.cpp"
 
-int convert_signal(int value);
-
 int main(){
-  printf("===Starting code===\n");
   Test te;
   te.a = 1;
   te.b = 2;
   te.name = "eduardo schneiders";
-
 
   const char* text = "eduardo";
 
@@ -33,4 +29,3 @@ int main(){
 
   return 0;
 }
-

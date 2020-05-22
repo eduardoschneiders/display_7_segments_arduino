@@ -73,11 +73,12 @@ void DISPLAY::handle(int d){
   printf("%d\n", d);
 
   if (_d2 && _d3 && _d4){
+    int* digits = splitDigits(d);
 
-    int d1 = ((d % 10000) - (d % 1000)) / 1000;
-    int d2 = ((d % 1000) - (d % 100)) / 100;
-    int d3 = ((d % 100) - (d % 10)) / 10;
-    int d4 = d % 10;
+    int d1 = digits[0];
+    int d2 = digits[1];
+    int d3 = digits[2];
+    int d4 = digits[3];
 
     printf("%d, %d, %d, %d\n", d1, d2, d3, d4);
 
@@ -98,4 +99,15 @@ void DISPLAY::handle(int d){
 
 int DISPLAY::convert_signal(int value){
 	return value ^ _anode_mode;
+}
+
+int* DISPLAY::splitDigits(int digit){
+  int* array = new int[4];
+
+  array[0] = ((digit % 10000) - (digit % 1000)) / 1000;
+  array[1] = ((digit % 1000) - (digit % 100)) / 100;
+  array[2] = ((digit % 100) - (digit % 10)) / 10;
+  array[3] = digit % 10;
+
+  return array;
 }
