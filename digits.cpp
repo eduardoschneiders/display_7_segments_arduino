@@ -27,16 +27,8 @@ void setup() {
 }
 
 void loop() {
-  
-
-  // if (current_number > 9)
-  //   current_number = 0;
-
-  Serial.print("main program(digits.cpp): ");
   Serial.println(current_number);
-  // display.showDigit(current_number++);
-  display.handle(current_number);
+  display.showDigit(current_number++);
  
-  // exit(0);
-  delay(1000 * 1);
+  delay(1000);
 }

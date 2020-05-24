@@ -2,42 +2,45 @@
 #include "debug_number.h"
 #include "mock_arduino.h"
 
-
 int __anode_mode = 1;
-int offset = 2;
+int _a = 2;
+int _b = 3;
+int _c = 4;
+int _d = 5;
+int _e = 6;
+int _f = 7;
+int _g = 8;
 
 void debug_number(){
-  if (convert_signal(_arduino_pins[0 + offset]))
+  if (convert_signal(_arduino_pins[_a]))
     printf(" _ "); // A
 
   printf("\n");
 
-  printf(convert_signal(_arduino_pins[5 + offset]) ? "|" : " ");  // F
+  printf(convert_signal(_arduino_pins[_f]) ? "|" : " ");  // F
   
   printf(" ");
 
-  if (convert_signal(_arduino_pins[1 + offset]))
+  if (convert_signal(_arduino_pins[_b]))
     printf("|");  // B
   
   printf("\n");
 
-  if (convert_signal(_arduino_pins[6 + offset]))
+  if (convert_signal(_arduino_pins[_g]))
     printf(" - "); // G
 
   printf("\n");
-
   
-  printf(convert_signal(_arduino_pins[4 + offset]) ? "|" : " ");  // E
+  printf(convert_signal(_arduino_pins[_e]) ? "|" : " ");  // E
 
   printf(" ");
 
-  if (convert_signal(_arduino_pins[2 + offset]))
+  if (convert_signal(_arduino_pins[_c]))
     printf("|");  // C
-  
 
   printf("\n");
 
-  if (convert_signal(_arduino_pins[3 + offset]))
+  if (convert_signal(_arduino_pins[_d]))
     printf(" - "); // D
 
   

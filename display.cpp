@@ -32,8 +32,24 @@ void DISPLAY::setup(){
   }
 }
 
+void DISPLAY::showDigit(int number){
+  if (_d2 && _d3 && _d4){
+    int* digits = splitDigits(number);
 
-void DISPLAY::showDigit(int digit, int d){
+    renderDigit(digits[0], _d1);
+    delay(10);
+    renderDigit(digits[1], _d2);
+    delay(10);
+    renderDigit(digits[2], _d3);
+    delay(10);
+    renderDigit(digits[3], _d4);
+    delay(10);
+  } else {
+    renderDigit(number, _d1);
+  }
+}
+
+void DISPLAY::renderDigit(int digit, int d){
   if (digit > 9){
     printf("Digit (%d) greater than allowed digit 9!\n", digit);
     exit(EXIT_FAILURE);
@@ -43,10 +59,7 @@ void DISPLAY::showDigit(int digit, int d){
     d = _d1;
 
   if (_d2 && _d3 && _d4){
-    digitalWrite(_d1, convert_signal(LOW));
-    digitalWrite(_d2, convert_signal(LOW));
-    digitalWrite(_d3, convert_signal(LOW));
-    digitalWrite(_d4, convert_signal(LOW));
+    shutdownAllDigits();
 
     digitalWrite(d, convert_signal(HIGH));
   } else {
@@ -58,43 +71,8 @@ void DISPLAY::showDigit(int digit, int d){
     digitalWrite(_pins[i], signal);
   }
 
+  printf("\nDigit: %d\n", d);
   debug_number();
-}
-
-void DISPLAY::handle(int d){
-  // TODO receive number as param;
-  // Split it in algarisms;
-  // Call showDigit on that number;
-  // Handle has to be in a loop;
-  // It should be inside a thread, so it don't stop the main process
-
-  // Split it in algarisms;
-  printf("\n--------------------------Init handle--------------------------\n");
-  printf("%d\n", d);
-
-  if (_d2 && _d3 && _d4){
-    int* digits = splitDigits(d);
-
-    int d1 = digits[0];
-    int d2 = digits[1];
-    int d3 = digits[2];
-    int d4 = digits[3];
-
-    printf("%d, %d, %d, %d\n", d1, d2, d3, d4);
-
-    showDigit(d1, _d1);
-    sleep(1);
-    showDigit(d2, _d2);
-    sleep(1);
-    showDigit(d3, _d3);
-    sleep(1);
-    showDigit(d4, _d4);
-  } else {
-    showDigit(d, _d1);
-  }
-
-  printf("\n--------------------------End handle--------------------------\n");
-
 }
 
 int DISPLAY::convert_signal(int value){
@@ -110,4 +88,11 @@ int* DISPLAY::splitDigits(int digit){
   array[3] = digit % 10;
 
   return array;
+}
+
+void DISPLAY::shutdownAllDigits(){
+  digitalWrite(_d1, convert_signal(LOW));
+  digitalWrite(_d2, convert_signal(LOW));
+  digitalWrite(_d3, convert_signal(LOW));
+  digitalWrite(_d4, convert_signal(LOW));
 }

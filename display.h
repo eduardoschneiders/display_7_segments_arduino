@@ -7,10 +7,14 @@
     public:
       DISPLAY(int pins[], int anode_mode, int d1, int d2=0, int d3=0, int d4=0);
       void setup();
-      void showDigit(int digit, int d=0);
-      void handle(int d);
+      void showDigit(int number);
 		
     private:
+      void renderDigit(int digit, int d=0);
+      int convert_signal(int value);
+      int* splitDigits(int number);
+      void shutdownAllDigits();
+
       int _pins[7];
       int _anode_mode;
       int _d1, _d2, _d3, _d4;
@@ -27,8 +31,6 @@
         {1,1,1,1,1,1,1}, // 8
         {1,1,1,1,0,1,1}, // 9
       };
-      int convert_signal(int value);
-      int* splitDigits(int digit);
 	};
 
 #endif
